@@ -15,6 +15,8 @@ export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
 PROMPT="%/%% "
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
+autoload -Uz colors
+colors
 
 #コマンド履歴
 HISTFILE=~/.zsh_history
@@ -39,6 +41,30 @@ bindkey "^N" history-beginning-search-forward-end
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
+
+#漢の引用 色つけ系
+## Alias configuration
+#
+# expand aliases before completing
+#
+setopt complete_aliases # aliased ls needs if file/dir completions work
+alias where="command -v"
+alias j="jobs -l"
+case "${OSTYPE}" in
+freebsd*|darwin*)
+  alias ls="ls -G -w"
+  ;;
+linux*)
+  alias ls="ls --color"
+  ;;
+esac
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -l"
+alias du="du -h"
+alias df="df -h"
+alias su="su -l"
+
 
 #aliasなど、マシンに依存した分を.bashrcに書いておいた
 source ~/.bashrc
