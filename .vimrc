@@ -21,3 +21,21 @@ syntax on
 set autoindent
 set tabstop=2
 set laststatus=2
+
+"----------------------------------------------------
+" vundle
+"----------------------------------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" vim-scripts repos
+Bundle 'Source-Explorer-srcexpl.vim'
+Bundle 'trinity.vim'
+Bundle 'The-NERD-tree'
+Bundle 'taglist.vim'
+filetype plugin indent on
+
+
