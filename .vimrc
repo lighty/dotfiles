@@ -21,6 +21,7 @@ syntax on
 set autoindent
 set tabstop=2
 set laststatus=2
+set hlsearch "検索キーワードのハイライト
 
 "----------------------------------------------------
 " vundle
