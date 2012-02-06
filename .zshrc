@@ -8,6 +8,9 @@ setopt auto_cd
 #pushd
 setopt auto_pushd
 
+#ブレースを展開してくれる
+setopt brace_ccl
+
 #tmuxとかmysqlの設定
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
 
@@ -42,6 +45,8 @@ bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 
+#aliasなど、マシンに依存した分を.bashrcに書いておいた
+source ~/.bashrc
 #漢の引用 色つけ系
 ## Alias configuration
 #
@@ -65,6 +70,11 @@ alias du="du -h"
 alias df="df -h"
 alias su="su -l"
 
+#勝手に統計情報を出してくれる
+REPORTTIME=3
+
+#補完候補を矢印キーなどで選択出来るようにする
+zstyle ':completion:*:default' menu select
 
 #aliasなど、マシンに依存した分を.bashrcに書いておいた
 source ~/.bashrc
