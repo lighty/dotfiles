@@ -13,15 +13,18 @@ set nobackup
 " スワップファイルを作るディレクトリ
 "set directory=~/swap
 
+highlight NonText guifg=darkgreen
+
 "----------------------------------------------------
 " 表示関係
 "----------------------------------------------------
-set nu
-syntax on
-set autoindent
-set tabstop=2
-set laststatus=2
-set hlsearch "検索キーワードのハイライト
+:set nu
+:set tabstop=2
+:set autoindent
+:syntax on
+:set enc=utf-8
+:set fileencodings=ucs-bom,euc-jp,default,latin1
+:set hlsearch
 
 "----------------------------------------------------
 " vundle
@@ -30,6 +33,9 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
+" original repos on github
+" Bundle 'tpope/vim-fugitive'
+Bundle 'Align'
 Bundle 'gmarik/vundle'
 
 " vim-scripts repos
