@@ -25,6 +25,7 @@ highlight NonText guifg=darkgreen
 :set enc=utf-8
 :set fileencodings=ucs-bom,euc-jp,default,latin1
 :set hlsearch
+set shiftwidth=2
 
 "----------------------------------------------------
 " vundle
