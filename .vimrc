@@ -18,14 +18,45 @@ highlight NonText guifg=darkgreen
 "----------------------------------------------------
 " 表示関係
 "----------------------------------------------------
-:set nu
-:set tabstop=2
-:set autoindent
-:syntax on
-:set enc=utf-8
-:set fileencodings=ucs-bom,euc-jp,default,latin1
-:set hlsearch
+set nu
+set tabstop=2
+set autoindent
+syntax on
+set enc=utf-8
+set fileencodings=ucs-bom,euc-jp,default,latin1
+set hlsearch
 set shiftwidth=2
+
+"----------------------------------------------------
+" 未分類
+"----------------------------------------------------
+set paste
+
+"----------------------------------------------------
+" unite.vim
+"----------------------------------------------------
+" 入力モードで開始
+let g:unite_enable_start_insert=1
+
+"mru,reg,buf
+noremap :um :<C-u>Unite file_mru -buffer-name=file_mru<CR>
+noremap :ur :<C-u>Unite register -buffer-name=register<CR>
+noremap :ub :<C-u>Unite buffer -buffer-name=buffer<CR>
+
+"file current_dir
+noremap :ufc :<C-u>Unite file -buffer-name=file<CR>
+noremap :ufcr :<C-u>Unite file_rec -buffer-name=file_rec<CR>
+
+"file file_current_dir
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+noremap :uffr :<C-u>UniteWithBufferDir file_rec -buffer-name=file_rec<CR>
+
+" c-jはescとする
+au FileType unite nnoremap <silent> <buffer> <c-j> <esc><CR>
+
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "----------------------------------------------------
 " vundle
@@ -44,6 +75,8 @@ Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'trinity.vim'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
+Bundle 'thinca/vim-quickrun'
+Bundle 'unite.vim'
 filetype plugin indent on
 
 
