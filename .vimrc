@@ -6,31 +6,21 @@ set nobackup
 " ファイルの上書きの前にバックアップを作る
 " (ただし、backup がオンでない限り、バックアップは上書きに成功した後削除される)
 set writebackup
-" バックアップをとる場合
-set nobackup
 " バックアップファイルを作るディレクトリ
 "set backupdir=~/backup
 " スワップファイルを作るディレクトリ
 "set directory=~/swap
+" スワップファイルを作らない
+set noswapfile
 
 highlight NonText guifg=darkgreen
 
-"----------------------------------------------------
-" 表示関係
-"----------------------------------------------------
-set nu
-set tabstop=2
-set autoindent
-syntax on
-set enc=utf-8
-set fileencodings=ucs-bom,euc-jp,default,latin1
-set hlsearch
-set shiftwidth=2
 
 "----------------------------------------------------
 " 未分類
 "----------------------------------------------------
-set paste
+" バッファをクリップボードと共有します
+set clipboard+=unnamed
 
 "----------------------------------------------------
 " unite.vim
@@ -59,6 +49,10 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "----------------------------------------------------
+" Align
+"----------------------------------------------------
+:let g:Align_xstrlen = 3
+"----------------------------------------------------
 " vundle
 "----------------------------------------------------
 set nocompatible
@@ -71,12 +65,26 @@ Bundle 'Align'
 Bundle 'gmarik/vundle'
 
 " vim-scripts repos
-Bundle 'Source-Explorer-srcexpl.vim'
-Bundle 'trinity.vim'
-Bundle 'The-NERD-tree'
-Bundle 'taglist.vim'
+" Bundle 'Source-Explorer-srcexpl.vim'
+" Bundle 'trinity.vim'
+" Bundle 'The-NERD-tree'
+" Bundle 'taglist.vim'
 Bundle 'thinca/vim-quickrun'
-Bundle 'unite.vim'
+" Bundle 'kakkyz81/evervim'
+" Bundle 'DRascal/evervim'
+" Bundle 'unite.vim' 重い 
+Bundle 'Smooth-Scroll'
 filetype plugin indent on
 
-
+"----------------------------------------------------
+" 表示関係
+"----------------------------------------------------
+set autoindent
+set nu
+set tabstop=2
+syntax on
+set fileencodings=ucs-bom,euc-jp,default,latin1
+set enc=utf-8
+set hlsearch
+set shiftwidth=2
+set guifont=Source\ Code\ Pro:h16
