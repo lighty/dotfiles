@@ -23,14 +23,14 @@ set tabstop=2
 set autoindent
 syntax on
 set enc=utf-8
-set fileencodings=ucs-bom,euc-jp,default,latin1
+set fileencodings=euc-jp,sjis,cp932,utf-8
 set hlsearch
 set shiftwidth=2
 
 "----------------------------------------------------
 " 未分類
 "----------------------------------------------------
-set paste
+"set paste
 
 "----------------------------------------------------
 " unite.vim
@@ -71,12 +71,12 @@ Bundle 'Align'
 Bundle 'gmarik/vundle'
 
 " vim-scripts repos
-Bundle 'Source-Explorer-srcexpl.vim'
-Bundle 'trinity.vim'
-Bundle 'The-NERD-tree'
+"Bundle 'Source-Explorer-srcexpl.vim'
+"Bundle 'trinity.vim'
+"Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
 Bundle 'thinca/vim-quickrun'
-Bundle 'unite.vim'
+" Bundle 'unite.vim'
 filetype plugin indent on
 
 
