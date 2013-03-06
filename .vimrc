@@ -84,7 +84,13 @@ set nu
 set tabstop=2
 syntax on
 set fileencodings=ucs-bom,euc-jp,default,latin1
+"set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
 set hlsearch
 set shiftwidth=2
 set guifont=Source\ Code\ Pro:h16
+set expandtab
+".rhtml, .rbでタブ幅を2に変更
+au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.rhtml set nowrap tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.rb    set nowrap tabstop=2 shiftwidth=2
