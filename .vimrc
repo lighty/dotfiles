@@ -94,3 +94,16 @@ set expandtab
 au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rhtml set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb    set nowrap tabstop=2 shiftwidth=2
+
+au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.irb set nowrap tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.yml set nowrap tabstop=2 shiftwidth=2 expandtab
+
+"----------------------------------------------------
+" 移動など
+"----------------------------------------------------
+inoremap <silent> jj <ESC>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
