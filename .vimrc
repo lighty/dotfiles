@@ -75,6 +75,7 @@ Bundle 'thinca/vim-quickrun'
 " Bundle 'unite.vim' 重い 
 Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
+Bundle 'tpope/vim-surround'
 filetype plugin indent on
 " Bundle 'evervim'
 
