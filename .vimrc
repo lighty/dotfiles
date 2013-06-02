@@ -74,7 +74,9 @@ Bundle 'thinca/vim-quickrun'
 " Bundle 'DRascal/evervim'
 " Bundle 'unite.vim' 重い 
 Bundle 'Smooth-Scroll'
+Bundle 'xmledit'
 filetype plugin indent on
+" Bundle 'evervim'
 
 "----------------------------------------------------
 " 表示関係
@@ -82,12 +84,15 @@ filetype plugin indent on
 set autoindent
 set nu
 set tabstop=2
+set ignorecase
+set smartcase
+set incsearch
 syntax on
 set fileencodings=ucs-bom,euc-jp,default,latin1
 set enc=utf-8
 set hlsearch
 set shiftwidth=2
-set guifont=Source\ Code\ Pro:h16
+"set guifont=Source\ Code\ Pro:h16
 
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.irb set nowrap tabstop=2 shiftwidth=2 expandtab
@@ -101,3 +106,39 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
+
+" let g:evervim_devtoken='S=s7:U=b9d47:E=145d04ca496:C=13e789b7899:P=1cd:A=en-devtoken:V=2:H=8f7ed7a2d1d9d2c3dab3ad7773327a58'
+
+" vimrcを<Space>.で開く
+nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+" vimrcをすばやくリロード
+nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+" ヘルプ呼び出しを簡単に
+nnoremap <C-h> :<C-u>help<Space>
+" カーソル下のキーワードを:helpで引く
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+" 論理行移動と表示行移動のキーバインディングを入れ替える
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+" 日付の入力
+inoremap <expr> ,df strftime('%Y-%m-%d %H:%M:%S')
+inoremap <expr> ,ddd strftime('%Y-%m-%d')
+inoremap <expr> ,dd strftime('%Y%m%d')
+inoremap <expr> ,dt strftime('%H:%M:%S')
+" 最後に変更が行われたテキストを選択
+nnoremap gc `[v`]
+vnoremap gc :<C-u>normal gc<Enter>
+onoremap gc :<C-u>normal gc<Enter>
+" カレントウィンドウのカーソル行のみをハイライト
+autocmd!
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+" e ++enc={encoding} 文字コードを指定して開き直す
+command! Cp932 edit ++enc=cp932
+command! Eucjp edit ++enc=euc-jp
+command! Iso2022jp edit ++enc=sio-2022-jp
+command! Utf8 edit ++enc=utf-8
+command! Jis Iso2022jp
+command! Sjis Cp932
