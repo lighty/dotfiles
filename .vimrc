@@ -84,17 +84,17 @@ filetype plugin indent on
 "----------------------------------------------------
 set autoindent
 set nu
-set tabstop=2
 set ignorecase
 set smartcase
 set incsearch
-syntax on
+set tabstop=4
+
 set fileencodings=ucs-bom,euc-jp,default,latin1
 "set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
 set hlsearch
-set shiftwidth=2
 "set guifont=Source\ Code\ Pro:h16
+set shiftwidth=4
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2 expandtab
@@ -147,3 +147,7 @@ command! Iso2022jp edit ++enc=sio-2022-jp
 command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
+" tagsジャンプの時に複数有るときは一覧表示
+nnoremap <C-]> g<C-]>
+
+syntax on
