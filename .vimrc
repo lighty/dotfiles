@@ -76,6 +76,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
 filetype plugin indent on
 " Bundle 'evervim'
 
@@ -88,7 +89,6 @@ set tabstop=2
 set ignorecase
 set smartcase
 set incsearch
-syntax on
 set fileencodings=ucs-bom,euc-jp,default,latin1
 "set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
@@ -122,6 +122,8 @@ nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-h> :<C-u>help<Space>
 " カーソル下のキーワードを:helpで引く
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+" カーソル下の単語でカレントディレクトリ以下をvimgrep
+nnoremap <C-g><C-g> :<C-u>vimgrep /<C-r><C-w>/ **/* \| cw<Enter>
 " 論理行移動と表示行移動のキーバインディングを入れ替える
 noremap j gj
 noremap k gk
@@ -147,3 +149,13 @@ command! Iso2022jp edit ++enc=sio-2022-jp
 command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
+"----------------------------------------------------
+" simplenote プラグイン
+"----------------------------------------------------
+" Bundle 'kana/vim-metarw'
+" Bundle 'mattn/webapi-vim'
+" Bundle 'mattn/vim-metarw-simplenote'
+" let g:SimplenoteUsername = "hikalin8686@gmail.com"
+" let g:SimplenotePassword = "bibiri"
+
+syntax on
