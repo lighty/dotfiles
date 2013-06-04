@@ -151,7 +151,8 @@ command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
 " tagsジャンプの時に複数有るときは一覧表示
-nnoremap <C-]> g<C-]>
+"nnoremap <C-]> g<C-]>
+
 "----------------------------------------------------
 " simplenote プラグイン
 "----------------------------------------------------
