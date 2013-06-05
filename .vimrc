@@ -164,7 +164,10 @@ command! Sjis Cp932
 " Bundle 'mattn/vim-metarw-simplenote'
 
 " mrtazz/simplenote.vim
-source ./.vimrc_sec
+let sec_file = "./.vimrc_sec"
+if filereadable(sec_file)
+    source sec_file
+endif
 " vimscript作成用
 nnoremap ] :<C-u>source %<Enter>
 
