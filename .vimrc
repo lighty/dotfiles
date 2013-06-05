@@ -164,10 +164,10 @@ command! Sjis Cp932
 " Bundle 'mattn/vim-metarw-simplenote'
 
 " mrtazz/simplenote.vim
-if filereadable(".vimrc.local")
+if filereadable(expand("~". "/.vimrc.local"))
     " let g:SimplenoteUsername = ""
     " let g:SimplenotePassword = ""
-    source .vimrc.local
+    source ~/.vimrc.local
 endif
 nnoremap <C-f>n :tabe<CR>
 nnoremap <C-f>s :Simplenote -n<CR>
