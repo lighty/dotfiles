@@ -77,9 +77,6 @@ Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
-Bundle 'mrtazz/simplenote.vim'
-" depended on by simplenote.vim
-Bundle 'tpope/vim-pathogen' 
 filetype plugin indent on
 " Bundle 'evervim'
 
@@ -163,16 +160,37 @@ command! Sjis Cp932
 " Bundle 'mattn/webapi-vim'
 " Bundle 'mattn/vim-metarw-simplenote'
 
+"----------------------------------------------------
+" simplenote プラグイン
 " mrtazz/simplenote.vim
+"----------------------------------------------------
+" Bundle 'mrtazz/simplenote.vim'
+" Bundle 'tpope/vim-pathogen' 
+" if filereadable(expand("~". "/.vimrc.local"))
+"     " let g:SimplenoteUsername = ""
+"     " let g:SimplenotePassword = ""
+"     source ~/.vimrc.local
+" endif
+" nnoremap <C-f>n :tabe<CR>
+" nnoremap <C-f>s :Simplenote -n<CR>
+" nnoremap <C-f>l :Simplenote -l<CR>
+" nnoremap <C-f>d :Simplenote -d<CR>
+
+"----------------------------------------------------
+" vimplenote プラグイン
+" mattn/vimplenote.vim
+"----------------------------------------------------
+Bundle 'lighty/vimplenote-vim'
+Bundle 'mattn/webapi-vim'
 if filereadable(expand("~". "/.vimrc.local"))
     " let g:SimplenoteUsername = ""
     " let g:SimplenotePassword = ""
     source ~/.vimrc.local
 endif
 nnoremap <C-f>n :tabe<CR>
-nnoremap <C-f>s :Simplenote -n<CR>
-nnoremap <C-f>l :Simplenote -l<CR>
-nnoremap <C-f>d :Simplenote -d<CR>
+nnoremap <C-f>s :VimpleNote -n<CR>
+nnoremap <C-f>l :VimpleNote -l<CR>
+nnoremap <C-f>d :VimpleNote -d<CR>
 
 " vimscript作成用
 nnoremap ] :<C-u>source %<Enter>
