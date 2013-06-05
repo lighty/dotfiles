@@ -76,6 +76,10 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
+Bundle 'mrtazz/simplenote.vim'
+" depended on by simplenote.vim
+Bundle 'tpope/vim-pathogen' 
 filetype plugin indent on
 " Bundle 'evervim'
 
@@ -122,6 +126,8 @@ nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-h> :<C-u>help<Space>
 " カーソル下のキーワードを:helpで引く
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+" カーソル下の単語でカレントディレクトリ以下をvimgrep
+nnoremap <C-g><C-g> :<C-u>vimgrep /<C-r><C-w>/ **/* \| cw<Enter>
 " 論理行移動と表示行移動のキーバインディングを入れ替える
 noremap j gj
 noremap k gk
@@ -148,6 +154,18 @@ command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
 " tagsジャンプの時に複数有るときは一覧表示
-nnoremap <C-]> g<C-]>
+"nnoremap <C-]> g<C-]>
+
+"----------------------------------------------------
+" simplenote プラグイン
+"----------------------------------------------------
+" Bundle 'kana/vim-metarw'
+" Bundle 'mattn/webapi-vim'
+" Bundle 'mattn/vim-metarw-simplenote'
+
+" mrtazz/simplenote.vim
+source ./.vimrc_sec
+" vimscript作成用
+nnoremap ] :<C-u>source %<Enter>
 
 syntax on
