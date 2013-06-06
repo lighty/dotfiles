@@ -159,7 +159,40 @@ command! Sjis Cp932
 " Bundle 'kana/vim-metarw'
 " Bundle 'mattn/webapi-vim'
 " Bundle 'mattn/vim-metarw-simplenote'
-" let g:SimplenoteUsername = "hikalin8686@gmail.com"
-" let g:SimplenotePassword = "bibiri"
+
+"----------------------------------------------------
+" simplenote プラグイン
+" mrtazz/simplenote.vim
+"----------------------------------------------------
+" Bundle 'mrtazz/simplenote.vim'
+" Bundle 'tpope/vim-pathogen' 
+" if filereadable(expand("~". "/.vimrc.local"))
+"     " let g:SimplenoteUsername = ""
+"     " let g:SimplenotePassword = ""
+"     source ~/.vimrc.local
+" endif
+" nnoremap <C-f>n :tabe<CR>
+" nnoremap <C-f>s :Simplenote -n<CR>
+" nnoremap <C-f>l :Simplenote -l<CR>
+" nnoremap <C-f>d :Simplenote -d<CR>
+
+"----------------------------------------------------
+" vimplenote プラグイン
+" mattn/vimplenote.vim
+"----------------------------------------------------
+Bundle 'lighty/vimplenote-vim'
+Bundle 'mattn/webapi-vim'
+if filereadable(expand("~". "/.vimrc.local"))
+    " let g:SimplenoteUsername = ""
+    " let g:SimplenotePassword = ""
+    source ~/.vimrc.local
+endif
+nnoremap <C-f>n :tabe<CR>
+nnoremap <C-f>s :VimpleNote -n<CR>
+nnoremap <C-f>l :VimpleNote -l<CR>
+nnoremap <C-f>d :VimpleNote -d<CR>
+
+" vimscript作成用
+nnoremap ] :<C-u>source %<Enter>
 
 syntax on
