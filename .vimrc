@@ -183,8 +183,8 @@ command! Sjis Cp932
 Bundle 'lighty/vimplenote-vim'
 Bundle 'mattn/webapi-vim'
 if filereadable(expand("~". "/.vimrc.local"))
-    " let g:SimplenoteUsername = ""
-    " let g:SimplenotePassword = ""
+    " let g:VimpleNoteUsername = ""
+    " let g:VimpleNotePassword = ""
     source ~/.vimrc.local
 endif
 nnoremap <C-f>n :tabe<CR>
