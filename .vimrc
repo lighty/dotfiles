@@ -73,12 +73,18 @@ Bundle 'thinca/vim-quickrun'
 " Bundle 'kakkyz81/evervim'
 " Bundle 'DRascal/evervim'
 " Bundle 'unite.vim' 重い 
-Bundle 'Smooth-Scroll'
+" Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 filetype plugin indent on
 " Bundle 'evervim'
+
+"----------------------------------------------------
+" camelcase - snake case
+"----------------------------------------------------
+Bundle 'tanabe/ToggleCase-vim'
+nnoremap <silent> <C-k> :<C-u>call ToggleCase()<CR>
 
 "----------------------------------------------------
 " 表示関係
