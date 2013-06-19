@@ -26,6 +26,7 @@ set enc=utf-8
 set fileencodings=euc-jp,sjis,cp932,utf-8
 set hlsearch
 set shiftwidth=2
+set noet
 
 "----------------------------------------------------
 " 未分類
