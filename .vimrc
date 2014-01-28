@@ -15,10 +15,23 @@ set noswapfile
 
 highlight NonText guifg=darkgreen
 
+"----------------------------------------------------
+" 表示関係
+"----------------------------------------------------
+set nu
+set tabstop=2
+set autoindent
+syntax on
+set enc=utf-8
+set fileencodings=euc-jp,sjis,cp932,utf-8
+set hlsearch
+set shiftwidth=2
+set noet
 
 "----------------------------------------------------
 " 未分類
 "----------------------------------------------------
+"set paste
 " バッファをクリップボードと共有します
 set clipboard+=unnamed
 
@@ -73,12 +86,18 @@ Bundle 'thinca/vim-quickrun'
 " Bundle 'kakkyz81/evervim'
 " Bundle 'DRascal/evervim'
 " Bundle 'unite.vim' 重い 
-Bundle 'Smooth-Scroll'
+" Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 filetype plugin indent on
 " Bundle 'evervim'
+
+"----------------------------------------------------
+" camelcase - snake case
+"----------------------------------------------------
+Bundle 'tanabe/ToggleCase-vim'
+nnoremap <silent> <C-k> :<C-u>call ToggleCase()<CR>
 
 "----------------------------------------------------
 " 表示関係
@@ -94,7 +113,6 @@ set fileencodings=ucs-bom,euc-jp,default,latin1
 "set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
 set hlsearch
-"set guifont=Source\ Code\ Pro:h16
 set shiftwidth=4
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
@@ -183,8 +201,8 @@ command! Sjis Cp932
 Bundle 'lighty/vimplenote-vim'
 Bundle 'mattn/webapi-vim'
 if filereadable(expand("~". "/.vimrc.local"))
-    " let g:SimplenoteUsername = ""
-    " let g:SimplenotePassword = ""
+    " let g:VimpleNoteUsername = ""
+    " let g:VimpleNotePassword = ""
     source ~/.vimrc.local
 endif
 nnoremap <C-f>n :tabe<CR>
