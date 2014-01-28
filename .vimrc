@@ -13,6 +13,8 @@ set writebackup
 " スワップファイルを作らない
 set noswapfile
 
+" 自動改行の抑制
+set tw=0
 highlight NonText guifg=darkgreen
 
 "----------------------------------------------------
@@ -62,10 +64,6 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "----------------------------------------------------
-" Align
-"----------------------------------------------------
-:let g:Align_xstrlen = 3
-"----------------------------------------------------
 " vundle
 "----------------------------------------------------
 set nocompatible
@@ -74,7 +72,6 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 " original repos on github
 " Bundle 'tpope/vim-fugitive'
-Bundle 'Align'
 Bundle 'gmarik/vundle'
 
 " vim-scripts repos
@@ -98,6 +95,11 @@ filetype plugin indent on
 "----------------------------------------------------
 Bundle 'tanabe/ToggleCase-vim'
 nnoremap <silent> <C-k> :<C-u>call ToggleCase()<CR>
+" Align
+"----------------------------------------------------
+:let g:Align_xstrlen = 3
+Bundle 'Align'
+vnoremap <C-l> :Align 
 
 "----------------------------------------------------
 " 表示関係
@@ -107,13 +109,16 @@ set nu
 set ignorecase
 set smartcase
 set incsearch
-set tabstop=4
+
 
 set fileencodings=ucs-bom,euc-jp,default,latin1
 "set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
 set hlsearch
-set shiftwidth=4
+"set shiftwidth=4
+"set guifont=Source\ Code\ Pro:h16
+set tabstop=2
+set shiftwidth=2
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2 expandtab
@@ -212,5 +217,12 @@ nnoremap <C-f>d :VimpleNote -d<CR>
 
 " vimscript作成用
 nnoremap ] :<C-u>source %<Enter>
+
+"----------------------------------------------------
+"vim-auto-save
+"----------------------------------------------------
+Bundle 'vim-scripts/vim-auto-save'
+let g:auto_save = 1
+
 
 syntax on
