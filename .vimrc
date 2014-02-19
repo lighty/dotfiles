@@ -21,13 +21,11 @@ highlight NonText guifg=darkgreen
 " 表示関係
 "----------------------------------------------------
 set nu
-set tabstop=2
 set autoindent
 syntax on
 set enc=utf-8
 set fileencodings=euc-jp,sjis,cp932,utf-8
 set hlsearch
-set shiftwidth=2
 set noet
 
 "----------------------------------------------------
@@ -115,10 +113,9 @@ set fileencodings=ucs-bom,euc-jp,default,latin1
 "set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set enc=utf-8
 set hlsearch
-"set shiftwidth=4
 "set guifont=Source\ Code\ Pro:h16
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2 expandtab
@@ -219,10 +216,37 @@ nnoremap <C-f>d :VimpleNote -d<CR>
 nnoremap ] :<C-u>source %<Enter>
 
 "----------------------------------------------------
+" windowのサイズ変更を楽uruする
+"----------------------------------------------------
+Bundle 'kana/vim-submode'
+" submode.vim
+" " http://d.hatena.ne.jp/thinca/20130131/1359567419
+  " " ウィンドウサイズの変更キーを簡易化する
+" " [C-w],[+]または、[C-w],[-]
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>-')
+call submode#map('winsize', 'n', '', '-', '<C-w>+')
+
+"----------------------------------------------------
 "vim-auto-save
 "----------------------------------------------------
 Bundle 'vim-scripts/vim-auto-save'
 let g:auto_save = 1
 
+"----------------------------------------------------
+"yankround.vim
+"----------------------------------------------------
+Bundle 'LeafCage/yankround.vim'
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 
 syntax on
