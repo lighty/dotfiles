@@ -249,4 +249,12 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
+"----------------------------------------------------
+"pbcopy (for mac)
+"----------------------------------------------------
+nnoremap sc :call system("pbcopy", @0)<CR>
+
+Bundle '2072/PHP-Indenting-for-VIm'
+let g:PHP_vintage_case_default_indent = 1
+
 syntax on
