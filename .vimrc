@@ -254,7 +254,15 @@ nmap <C-n> <Plug>(yankround-next)
 "----------------------------------------------------
 nnoremap sc :call system("pbcopy", @0)<CR>
 
+"----------------------------------------------------
+"phpのswitchを良い感じにインデント
+"----------------------------------------------------
 Bundle '2072/PHP-Indenting-for-VIm'
 let g:PHP_vintage_case_default_indent = 1
+
+" gitの差分を表示するぜ
+Bundle 'airblade/vim-gitgutter'
+nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 syntax on
