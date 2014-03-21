@@ -38,6 +38,7 @@ set clipboard+=unnamed
 "----------------------------------------------------
 " unite.vim
 "----------------------------------------------------
+" Bundle 'git://github.com/Shougo/vimproc' 
 " 入力モードで開始
 let g:unite_enable_start_insert=1
 
@@ -80,7 +81,6 @@ Bundle 'gmarik/vundle'
 Bundle 'thinca/vim-quickrun'
 " Bundle 'kakkyz81/evervim'
 " Bundle 'DRascal/evervim'
-" Bundle 'unite.vim' 重い 
 " Bundle 'Smooth-Scroll'
 Bundle 'xmledit'
 Bundle 'tpope/vim-surround'
@@ -123,6 +123,7 @@ au BufNewFile,BufRead *.rhtml set nowrap tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb    set nowrap tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.irb   set nowrap tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml   set nowrap tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.php   set fenc=euc-jp
 
 "----------------------------------------------------
 " 移動など
@@ -267,5 +268,10 @@ let g:PHP_vintage_case_default_indent = 1
 Bundle 'airblade/vim-gitgutter'
 nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
+
+"----------------------------------------------------
+" ブレースの改行が気持ち悪いPSR2
+"----------------------------------------------------
+Bundle 'stephpy/vim-php-cs-fixer'
 
 syntax on
