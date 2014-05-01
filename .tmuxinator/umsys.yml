@@ -1,0 +1,26 @@
+# ~/.tmuxinator/work.yml
+
+name: work
+root: ~/dev/colorme
+
+pre:
+  - cd ~/dev/colorme/cmsp-development-puppet
+  - vagrant up
+
+windows:
+  - local:
+      layout: main-vertical
+      panes:
+        - pane1:
+          - cd ~/dev/colorme/cmsp-umsys
+          - vim index.php
+  - remote:
+      layout: even-horizontal
+      panes:
+        - maglica:
+          - ssh lt
+          - cum
+        - devumsys:
+          - ssh root@192.168.39.95 
+          - cd /home/sites/paperboy.co.jp/web/cmsp/personal/lighty
+

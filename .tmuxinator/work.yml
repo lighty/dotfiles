@@ -1,0 +1,23 @@
+# ~/.tmuxinator/work.yml
+
+name: work
+root: ~/dev/colorme
+
+windows:
+  - admin:
+      layout: main-vertical
+      panes:
+        - pane1:
+          - cd ~/dev/colorme/cmsp-admin
+  - umsys: 
+      layout: main-vertical
+      panes:
+        - pane1:
+          - cd ~/dev/colorme/cmsp-umsys
+  - vagrant:
+      layout: main-vertical
+      panes:
+        - pane1:
+          - cd ~/dev/colorme/cmsp-development-puppet
+          - vagrant up
+          - exit

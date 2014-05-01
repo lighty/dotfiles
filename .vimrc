@@ -1,4 +1,12 @@
 "----------------------------------------------------
+" leaderをスペースに変更
+"----------------------------------------------------
+let mapleader=" "
+
+" インサートモード時にバックスペースを使う
+set backspace=indent,eol,start
+
+"----------------------------------------------------
 " バックアップ関係
 "----------------------------------------------------
 " バックアップをとらない
@@ -12,6 +20,11 @@ set writebackup
 "set directory=~/swap
 " スワップファイルを作らない
 set noswapfile
+
+" ステータスラインを表示させる
+set laststatus=2
+" Kaoriya版GVimのdefaultに近い表示
+set statusline=%-(%f%m%h%q%r%w%)%=%{&ff}\|%{&fenc}\ %y%l,%c\ %0P
 
 " 自動改行の抑制
 set tw=0
@@ -31,16 +44,61 @@ set noet
 "----------------------------------------------------
 " 未分類
 "----------------------------------------------------
-"set paste
 " バッファをクリップボードと共有します
 set clipboard+=unnamed
 
 "----------------------------------------------------
+" コピペのset pasteが辛いので :a! ctrl+v でも良し
+"----------------------------------------------------
+set pastetoggle=<C-E>
+
+"----------------------------------------------------
+" neobundle
+"----------------------------------------------------
+set nocompatible
+filetype off
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+" original repos on github
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'gmarik/vundle'
+NeoBundle 'Shougo/unite.vim' 
+
+" vim-scripts repos
+" NeoBundle 'Source-Explorer-srcexpl.vim'
+" NeoBundle 'trinity.vim'
+" NeoBundle 'The-NERD-tree'
+" NeoBundle 'taglist.vim'
+
+" NeoBundle 'kakkyz81/evervim'
+" NeoBundle 'DRascal/evervim'
+" NeoBundle 'Smooth-Scroll'
+NeoBundle 'xmledit'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-markdown'
+filetype plugin indent on
+filetype indent on
+" NeoBundle 'evervim'
+
+"----------------------------------------------------
+" quickrun
+"----------------------------------------------------
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = {}
+let g:quickrun_config.javascript = {'command': 'node'}
+
+"----------------------------------------------------
 " unite.vim
 "----------------------------------------------------
-" Bundle 'git://github.com/Shougo/vimproc' 
 " 入力モードで開始
 let g:unite_enable_start_insert=1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
 
 "mru,reg,buf
 noremap :um :<C-u>Unite file_mru -buffer-name=file_mru<CR>
@@ -62,42 +120,43 @@ au FileType unite nnoremap <silent> <buffer> <c-j> <esc><CR>
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
-"----------------------------------------------------
-" vundle
-"----------------------------------------------------
-set nocompatible
-filetype off
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-" original repos on github
-" Bundle 'tpope/vim-fugitive'
-Bundle 'gmarik/vundle'
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
-" vim-scripts repos
-" Bundle 'Source-Explorer-srcexpl.vim'
-" Bundle 'trinity.vim'
-" Bundle 'The-NERD-tree'
-" Bundle 'taglist.vim'
-Bundle 'thinca/vim-quickrun'
-" Bundle 'kakkyz81/evervim'
-" Bundle 'DRascal/evervim'
-" Bundle 'Smooth-Scroll'
-Bundle 'xmledit'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-filetype plugin indent on
-" Bundle 'evervim'
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 "----------------------------------------------------
 " camelcase - snake case
 "----------------------------------------------------
-Bundle 'tanabe/ToggleCase-vim'
+NeoBundle 'tanabe/ToggleCase-vim'
 nnoremap <silent> <C-k> :<C-u>call ToggleCase()<CR>
 " Align
 "----------------------------------------------------
 :let g:Align_xstrlen = 3
-Bundle 'Align'
+NeoBundle 'Align'
 vnoremap <C-l> :Align 
+
+"----------------------------------------------------
+" リンクをオープン
+"----------------------------------------------------
+vnoremap <C-o> y:!open<Space><C-r>"<CR><CR>
+NeoBundle 'tyru/open-browser.vim'
+" カーソル下のURLをブラウザで開く
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+" ググる
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
 
 "----------------------------------------------------
 " 表示関係
@@ -114,16 +173,19 @@ set fileencodings=ucs-bom,euc-jp,default,latin1
 set enc=utf-8
 set hlsearch
 "set guifont=Source\ Code\ Pro:h16
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
-au BufNewFile,BufRead *.erb   set nowrap tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.rhtml set nowrap tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.rb    set nowrap tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.irb   set nowrap tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.yml   set nowrap tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.php   set fenc=euc-jp
+au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rhtml setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab
+"au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
+au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab
+
 
 "----------------------------------------------------
 " 移動など
@@ -137,7 +199,7 @@ inoremap <C-l> <Right>
 " let g:evervim_devtoken='S=s7:U=b9d47:E=145d04ca496:C=13e789b7899:P=1cd:A=en-devtoken:V=2:H=8f7ed7a2d1d9d2c3dab3ad7773327a58'
 
 " vimrcを<Space>.で開く
-nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+nnoremap <Space>. :<C-u>tabedit $MYVIMRC<Enter>
 " vimrcをすばやくリロード
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 " ヘルプ呼び出しを簡単に
@@ -161,7 +223,7 @@ nnoremap gc `[v`]
 vnoremap gc :<C-u>normal gc<Enter>
 onoremap gc :<C-u>normal gc<Enter>
 " カレントウィンドウのカーソル行のみをハイライト
-autocmd!
+" autocmd!
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 " e ++enc={encoding} 文字コードを指定して開き直す
@@ -177,16 +239,15 @@ command! Sjis Cp932
 "----------------------------------------------------
 " simplenote プラグイン
 "----------------------------------------------------
-" Bundle 'kana/vim-metarw'
-" Bundle 'mattn/webapi-vim'
-" Bundle 'mattn/vim-metarw-simplenote'
+" NeoBundle 'kana/vim-metarw'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/vim-metarw-simplenote'
 
 "----------------------------------------------------
 " simplenote プラグイン
 " mrtazz/simplenote.vim
 "----------------------------------------------------
-" Bundle 'mrtazz/simplenote.vim'
-" Bundle 'tpope/vim-pathogen' 
+" NeoBundle 'mrtazz/simplenote.vim'
 " if filereadable(expand("~". "/.vimrc.local"))
 "     " let g:SimplenoteUsername = ""
 "     " let g:SimplenotePassword = ""
@@ -198,11 +259,17 @@ command! Sjis Cp932
 " nnoremap <C-f>d :Simplenote -d<CR>
 
 "----------------------------------------------------
+" gist.vim
+"----------------------------------------------------
+NeoBundle 'mattn/gist-vim'
+let g:github_api_url = 'http://ghe.tokyo.pb/api/v3'
+
+"----------------------------------------------------
 " vimplenote プラグイン
 " mattn/vimplenote.vim
 "----------------------------------------------------
-Bundle 'lighty/vimplenote-vim'
-Bundle 'mattn/webapi-vim'
+NeoBundle 'lighty/vimplenote-vim'
+NeoBundle 'mattn/webapi-vim'
 if filereadable(expand("~". "/.vimrc.local"))
     " let g:VimpleNoteUsername = ""
     " let g:VimpleNotePassword = ""
@@ -219,7 +286,7 @@ nnoremap ] :<C-u>source %<Enter>
 "----------------------------------------------------
 " windowのサイズ変更を楽uruする
 "----------------------------------------------------
-Bundle 'kana/vim-submode'
+NeoBundle 'kana/vim-submode'
 " submode.vim
 " " http://d.hatena.ne.jp/thinca/20130131/1359567419
   " " ウィンドウサイズの変更キーを簡易化する
@@ -236,14 +303,14 @@ call submode#map('winsize', 'n', '', '-', '<C-w>+')
 "----------------------------------------------------
 "vim-auto-save
 "----------------------------------------------------
-Bundle 'vim-scripts/vim-auto-save'
+NeoBundle 'vim-scripts/vim-auto-save'
 let g:auto_save = 1
 
 "----------------------------------------------------
 "yankround.vim
 "----------------------------------------------------
-Bundle 'LeafCage/yankround.vim'
-Bundle "kien/ctrlp.vim"
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle "kien/ctrlp.vim"
 
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -261,17 +328,56 @@ nnoremap sc :call system("pbcopy", @0)<CR>
 "----------------------------------------------------
 "phpのswitchを良い感じにインデント
 "----------------------------------------------------
-Bundle '2072/PHP-Indenting-for-VIm'
+NeoBundle '2072/PHP-Indenting-for-VIm'
 let g:PHP_vintage_case_default_indent = 1
 
 " gitの差分を表示するぜ
-Bundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 "----------------------------------------------------
 " ブレースの改行が気持ち悪いPSR2
 "----------------------------------------------------
-Bundle 'stephpy/vim-php-cs-fixer'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+
+"----------------------------------------------------
+" memolist
+"----------------------------------------------------
+NeoBundle 'glidenote/memolist.vim'
+nnoremap <Leader>mn  :MemoNew<CR>
+nnoremap <Leader>ml  :MemoList<CR>
+nnoremap <Leader>mg  :MemoGrep<CR>
+let g:memolist_memo_suffix = "md"
+
+"----------------------------------------------------
+" Simple-Javascript-Indenter
+"----------------------------------------------------
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+" この設定入れるとshiftwidthを1にしてインデントしてくれる
+let g:SimpleJsIndenter_BriefMode = 1
+" この設定入れるとswitchのインデントがいくらかマシに
+let g:SimpleJsIndenter_CaseIndentLevel = -1
+
+"----------------------------------------------------
+" Shougo/neocomplcache.vim
+"----------------------------------------------------
+NeoBundle 'Shougo/neocomplcache.vim'
+let g:neocomplcache_enable_at_startup = 1
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"----------------------------------------------------
+" syntastic
+"----------------------------------------------------
+" NeoBundle 'tpope/vim-pathogen' 
+" execute pathogen#infect()
+NeoBundle 'scrooloose/syntastic'
+
+
 
 syntax on
