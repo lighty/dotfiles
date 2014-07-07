@@ -35,7 +35,6 @@ highlight NonText guifg=darkgreen
 "----------------------------------------------------
 set nu
 set autoindent
-syntax on
 set enc=utf-8
 set fileencodings=euc-jp,sjis,cp932,utf-8
 set hlsearch
@@ -183,8 +182,8 @@ au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab
-"au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
-au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab
+au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
+"au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab
 
 
 "----------------------------------------------------
@@ -378,6 +377,18 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " execute pathogen#infect()
 NeoBundle 'scrooloose/syntastic'
 
+"----------------------------------------------------
+" quickrunでphpunitを実行
+" http://blog.ruedap.com/2011/02/25/vim-php-phpunit-quickrun
+"----------------------------------------------------
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *test.php set filetype=php.unit
+augroup END
+" 初期化
+let g:quickrun_config = {}
+" PHPUnit
+let g:quickrun_config['php.unit'] = {'command': 'phpunit_quickrun'}
 
 
 syntax on
