@@ -58,14 +58,32 @@ set nocompatible
 filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
 " original repos on github
-" NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 " NeoBundle 'gmarik/vundle'
 NeoBundle 'Shougo/unite.vim' 
+
+"----------------------------------------------------
+"Coffeeのsyntax http://qiita.com/hts1004/items/75c7128289d2c8590080
+"----------------------------------------------------
+NeoBundle 'kchmck/vim-coffee-script'
+
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデント設定
+autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
+" " オートコンパイル
+"   "保存と同時にコンパイルする
+" autocmd BufWritePost *.coffee silent make! 
+"   "エラーがあったら別ウィンドウで表示
+" autocmd QuickFixCmdPost * nested cwindow | redraw! 
+" " Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
+" nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 
 " vim-scripts repos
 " NeoBundle 'Source-Explorer-srcexpl.vim'
@@ -175,27 +193,33 @@ set hlsearch
 set tabstop=2
 set expandtab
 ".rhtml, .rbでタブ幅を2に変更
-au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.rhtml setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.rake  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
+au BufNewFile,BufRead *.md    setlocal fenc=utf8
 "au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab
-
+" macのcrontab編集用
+set backupskip=/tmp/*,/private/tmp/*
 
 "----------------------------------------------------
 " 移動など
 "----------------------------------------------------
-inoremap <silent> jj <ESC>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" noremap <silent> jj <ESC>
+" noremap <C-j> <Down>
+" noremap <C-k> <Up>
+" noremap <C-h> <Left>
+" noremap <C-l> <Right>
+imap <C-j> <ESC>
+"<C-j>2回でハイライト消去
+nnoremap <C-j><C-j> :<C-u>nohlsearch<CR><Esc>
 
-" let g:evervim_devtoken='S=s7:U=b9d47:E=145d04ca496:C=13e789b7899:P=1cd:A=en-devtoken:V=2:H=8f7ed7a2d1d9d2c3dab3ad7773327a58'
 
 " vimrcを<Space>.で開く
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<Enter>
@@ -283,6 +307,10 @@ nnoremap <C-f>d :VimpleNote -d<CR>
 nnoremap ] :<C-u>source %<Enter>
 
 "----------------------------------------------------
+" slimのシンタックスハイライト
+"----------------------------------------------------
+NeoBundle "slim-template/vim-slim"
+"----------------------------------------------------
 " windowのサイズ変更を楽uruする
 "----------------------------------------------------
 NeoBundle 'kana/vim-submode'
@@ -348,7 +376,7 @@ nnoremap <Leader>mn  :MemoNew<CR>
 nnoremap <Leader>ml  :MemoList<CR>
 nnoremap <Leader>mg  :MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
-
+let g:memolist_template_dir_path = "~/memolist_templates"
 "----------------------------------------------------
 " Simple-Javascript-Indenter
 "----------------------------------------------------
@@ -385,10 +413,53 @@ augroup QuickRunPHPUnit
   autocmd!
   autocmd BufWinEnter,BufNewFile *test.php set filetype=php.unit
 augroup END
-" 初期化
-let g:quickrun_config = {}
 " PHPUnit
-let g:quickrun_config['php.unit'] = {'command': 'phpunit_quickrun'}
+let g:quickrun_config['php.unit'] = { 'command': '/usr/local/bin/phpunit_quickrun', 'cmdopt': 'php', 'exec': '%o %c %s' }
+
+"----------------------------------------------------
+" quickrunでrspecを実行
+" http://qiita.com/Qureana/items/b057c934733554e05427
+"----------------------------------------------------
+augroup QuickRunRspec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+let g:quickrun_config['ruby.rspec'] = { 'command': 'rspec' }
+"let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %o %s %a']}
+
+"----------------------------------------------------
+" markdownをquickrunで表示
+"----------------------------------------------------
+NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
+let g:quickrun_config = {
+\   'markdown': {
+\     'outputter': 'browser'
+\   }
+\ }
+let g:quickrun_config['ruby'] = { 'command': 'ruby', 'cmdopt': 'bundle exec', 'exec': '%o %c %s' }
+
+
+"----------------------------------------------------
+" git brows-remote
+"----------------------------------------------------
+command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<line2> <f-args> -- %
+
+"----------------------------------------------------
+" http://www.kaoriya.net/blog/2014/03/30/
+"----------------------------------------------------
+set undodir=~/vimundo
+
+"----------------------------------------------------
+" 削除キーでyankしない
+"----------------------------------------------------
+nnoremap x "_x
+"nnoremap d "_d
+nnoremap D "_D
+
+"----------------------------------------------------
+" ビジュアルモードの貼り付けでyankしない
+"----------------------------------------------------
+vnoremap <silent> <C-p> "0p<CR>
 
 
 syntax on
