@@ -13,6 +13,7 @@ set nocompatible
 " 検索時に大文字小文字をいい感じに扱う
 set ignorecase
 set smartcase
+set noundofile
 
 filetype off
 if has('vim_starting')
@@ -53,12 +54,19 @@ vmap <Leader>o <Plug>(openbrowser-open)
 "<C-j>2回でハイライト消去
 nnoremap <C-j><C-j> :<C-u>nohlsearch<CR><Esc>
 
+"putをやりやすく
+vnoremap <silent> <C-p> "0p<CR>
+
 " memolist
 nnoremap <Leader>mn  :MemoNew<CR>
 nnoremap <Leader>ml  :MemoList<CR>
 nnoremap <Leader>mg  :MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_template_dir_path = "~/memolist_templates"
+nnoremap [q :cprevious<CR>   " 前へ
+nnoremap ]q :cnext<CR>       " 次へ
+nnoremap [Q :<C-u>cfirst<CR> " 最初へ
+nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<line2> <f-args> -- %
 
@@ -68,6 +76,9 @@ let g:auto_save = 1
 " c-jはescとする
 imap <C-j> <ESC>
 
+" quickrunのバッファエリアをスペース+qで閉じる
+nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
+
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
@@ -76,9 +87,13 @@ au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf
 au BufNewFile,BufRead *.css   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.rake  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.py    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8
 au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.pp    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8
+au BufNewFile,BufRead *.coffee setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
+au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.md    setlocal fenc=utf8
 syntax on
