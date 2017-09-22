@@ -32,6 +32,7 @@ if has('vim_starting')
   NeoBundle 'glidenote/memolist.vim'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'typescript-vim'
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'thinca/vim-quickrun'
@@ -91,7 +92,8 @@ au BufNewFile,BufRead *.py    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf
 au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.pp    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
-au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.js    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8
+au BufNewFile,BufRead *.ts    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8 filetype=typescript
 au BufNewFile,BufRead *.coffee setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
 au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
