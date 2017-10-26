@@ -40,6 +40,7 @@ if has('vim_starting')
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'vim-scripts/vim-auto-save'
   NeoBundle "kien/ctrlp.vim"
+  NeoBundle 'nazo/pt.vim'
   call neobundle#end()
 endif
 
@@ -76,6 +77,9 @@ let g:auto_save = 1
 
 " c-jはescとする
 imap <C-j> <ESC>
+
+" 英かなでC-pを↑にマップしているのを打ち消す
+inoremap <UP> <C-p>
 
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
