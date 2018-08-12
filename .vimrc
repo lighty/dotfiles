@@ -14,6 +14,7 @@ set nocompatible
 set ignorecase
 set smartcase
 set noundofile
+set nf=alpha
 
 filetype off
 if has('vim_starting')
@@ -84,6 +85,10 @@ inoremap <UP> <C-p>
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
 
+" ctrlP用のキーマップ 参考: https://qiita.com/oahiroaki/items/d71337fb9d28303a54a8
+nnoremap <Leader>[ :<C-u>CtrlP<CR>
+nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
+
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
@@ -91,6 +96,7 @@ au BufNewFile,BufRead *.rhtml setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.css   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.thor  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8 filetype=ruby
 au BufNewFile,BufRead *.rake  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.py    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8
 au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
@@ -101,5 +107,6 @@ au BufNewFile,BufRead *.ts    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf
 au BufNewFile,BufRead *.coffee setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
 au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.yaml  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.md    setlocal fenc=utf8
 syntax on
