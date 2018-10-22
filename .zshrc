@@ -45,8 +45,6 @@ bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 
-#aliasなど、マシンに依存した分を.bashrcに書いておいた
-source ~/.bashrc
 #漢の引用 色つけ系
 ## Alias configuration
 #
@@ -65,7 +63,7 @@ linux*)
 esac
 alias la="ls -a"
 alias lf="ls -F"
-alias ll="ls -l"
+alias ll="ls -la"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
@@ -75,6 +73,3 @@ REPORTTIME=3
 
 #補完候補を矢印キーなどで選択出来るようにする
 zstyle ':completion:*:default' menu select
-
-#aliasなど、マシンに依存した分を.bashrcに書いておいた
-source ~/.bashrc
