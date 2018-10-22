@@ -31,6 +31,9 @@ setopt share_history        # share command history data
 #viライクキーバインド設定
 bindkey -v
 
+# Ctrl+a Ctrl+e が効かないので
+bindkey -e
+
 #コマンド履歴検索機能
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
