@@ -76,3 +76,21 @@ REPORTTIME=3
 
 #補完候補を矢印キーなどで選択出来るようにする
 zstyle ':completion:*:default' menu select
+
+# http://suzutan.hateblo.jp/entry/2017/12/05/165204
+function peco-repo-list () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-repo-list
+bindkey '^t' peco-repo-list
+function peco-git-browse () {
+    github_repo=$(ghq list | peco)
+    GITHUB_HOST=$(echo ${github_repo} | cut -d "/" -f 1) hub browse $(echo ${github_repo} | cut -d "/" -f 2,3)
+}
+zle -N peco-git-browse
+bindkey '^b' peco-git-browse
