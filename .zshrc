@@ -13,6 +13,7 @@ setopt brace_ccl
 
 #tmuxとかmysqlの設定
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
+export PATH=$HOME/.pyenv/shims:$PATH
 
 #プロンプト表示に関わる設定
 PROMPT="%/%% "
