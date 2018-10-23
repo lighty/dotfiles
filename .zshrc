@@ -94,4 +94,4 @@ function peco-git-browse () {
     GITHUB_HOST=$(echo ${github_repo} | cut -d "/" -f 1) hub browse $(echo ${github_repo} | cut -d "/" -f 2,3)
 }
 zle -N peco-git-browse
-bindkey '^b' peco-git-browse
+bindkey '^y' peco-git-browse
