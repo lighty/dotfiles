@@ -72,6 +72,13 @@ alias du="du -h"
 alias df="df -h"
 alias su="su -l"
 
+# git
+alias gs="git status"
+alias gd="git diff --color"
+alias gcm="git commit"
+alias ga="git add"
+alias gp="git pull"
+
 #勝手に統計情報を出してくれる
 REPORTTIME=3
 
