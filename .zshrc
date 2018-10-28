@@ -102,3 +102,6 @@ function peco-git-browse () {
 }
 zle -N peco-git-browse
 bindkey '^y' peco-git-browse
+
+# https://ambidata.io/blog/2018/03/15/ampy/
+export AMPY_PORT=/dev/tty.SLAB_USBtoUART
