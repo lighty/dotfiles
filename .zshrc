@@ -16,7 +16,7 @@ export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
 export PATH=$HOME/.pyenv/shims:$PATH
 
 #プロンプト表示に関わる設定
-PROMPT="%/%% "
+PROMPT="%m:%c %n$ "
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
 autoload -Uz colors
