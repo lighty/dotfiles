@@ -76,8 +76,10 @@ command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<lin
 "vim-auto-save
 let g:auto_save = 1
 
-" c-jはescとする
+" 便利
 imap <C-j> <ESC>
+nnoremap <Leader>t :<C-u>tabe<CR>
+nnoremap <Leader>w :<C-u>q<CR>
 
 " 英かなでC-pを↑にマップしているのを打ち消す
 inoremap <UP> <C-p>
@@ -88,6 +90,7 @@ nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
 " ctrlP用のキーマップ 参考: https://qiita.com/oahiroaki/items/d71337fb9d28303a54a8
 nnoremap <Leader>[ :<C-u>CtrlP<CR>
 nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
+
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
