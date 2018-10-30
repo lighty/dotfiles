@@ -76,6 +76,7 @@ alias su="su -l"
 alias gs="git status"
 alias gd="git diff --color"
 alias gcm="git commit"
+alias gch="git checkout"
 alias ga="git add"
 alias gp="git pull"
 
