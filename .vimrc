@@ -14,6 +14,7 @@ set nocompatible
 set ignorecase
 set smartcase
 set noundofile
+set showcmd 
 set nf=alpha
 
 filetype off
@@ -42,9 +43,12 @@ if has('vim_starting')
   NeoBundle 'vim-scripts/vim-auto-save'
   NeoBundle "kien/ctrlp.vim"
   NeoBundle 'nazo/pt.vim'
+  NeoBundle 'mattn/emmet-vim'
   call neobundle#end()
 endif
 
+" Emmetで使いたかったのでinsert modeのときも使えるように
+let imapleader="C-y"
 " leaderをスペースに変更
 let mapleader=" "
 
