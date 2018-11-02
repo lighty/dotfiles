@@ -87,6 +87,8 @@ let g:auto_save = 1
 imap <C-j> <ESC>
 nnoremap <Leader>t :<C-u>tabe<CR>
 nnoremap <Leader>w :<C-u>q<CR>
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
 
 " 英かなでC-pを↑にマップしているのを打ち消す
 inoremap <UP> <C-p>
