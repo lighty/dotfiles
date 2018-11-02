@@ -96,11 +96,12 @@ nnoremap <Leader>[ :<C-u>CtrlP<CR>
 nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
+inoremap [ []<Left>
+inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
+inoremap ` ``<Left>
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
