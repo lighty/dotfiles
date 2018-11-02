@@ -16,6 +16,9 @@ set smartcase
 set noundofile
 set showcmd 
 set nf=alpha
+set tabstop=2 
+set shiftwidth=2 
+set expandtab
 
 filetype off
 if has('vim_starting')
