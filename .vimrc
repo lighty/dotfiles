@@ -1,7 +1,7 @@
 set nu
 set autoindent
 set enc=utf-8
-set fileencodings=euc-jp,sjis,cp932,utf-8
+set fileencodings=utf-8,euc-jp,sjis,cp932
 set hlsearch
 set noet
 set pastetoggle=<C-E>
