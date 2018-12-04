@@ -106,3 +106,6 @@ bindkey '^y' peco-git-browse
 
 # https://ambidata.io/blog/2018/03/15/ampy/
 export AMPY_PORT=/dev/tty.SLAB_USBtoUART
+
+# for nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
