@@ -41,7 +41,7 @@ if has('vim_starting')
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'Align'
+  " NeoBundle 'Align'
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'vim-scripts/vim-auto-save'
   NeoBundle "kien/ctrlp.vim"
@@ -87,6 +87,8 @@ let g:auto_save = 1
 inoremap <C-j> <ESC>
 nnoremap <Leader>t :<C-u>tabe<CR>
 nnoremap <Leader>w :<C-u>q<CR>
+nnoremap <Leader>v :<C-u>vsp<CR>
+nnoremap <Leader>s :<C-u>sp<CR>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
