@@ -109,3 +109,7 @@ export AMPY_PORT=/dev/tty.SLAB_USBtoUART
 
 # for nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# for rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
