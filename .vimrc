@@ -84,7 +84,7 @@ command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<lin
 let g:auto_save = 1
 
 " 便利
-imap <C-j> <ESC>
+inoremap <C-j> <ESC>
 nnoremap <Leader>t :<C-u>tabe<CR>
 nnoremap <Leader>w :<C-u>q<CR>
 inoremap <C-f> <Right>
