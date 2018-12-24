@@ -113,3 +113,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # for rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
+
+# for imagemagic
+export PKG_CONFIG_PATH=/usr/local/Cellar/imagemagick@6/6.9.10-14/lib/pkgconfig
