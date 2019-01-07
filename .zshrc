@@ -15,6 +15,10 @@ setopt brace_ccl
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
 export PATH=$HOME/.pyenv/shims:$PATH
 
+# 便利スクリプト読み込み
+export PATH=$HOME/bin:$PATH
+
+
 #プロンプト表示に関わる設定
 PROMPT="%m:%c %n$ "
 PROMPT2="%_%% "
