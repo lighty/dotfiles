@@ -84,6 +84,8 @@ alias gch="git checkout"
 alias ga="git add"
 alias gp="git pull"
 
+alias pt="pt --global-gitignore"
+
 #勝手に統計情報を出してくれる
 REPORTTIME=3
 
