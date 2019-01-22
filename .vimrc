@@ -110,6 +110,15 @@ inoremap " ""<Left>
 inoremap ' ''<Left>
 inoremap ` ``<Left>
 
+" https://gist.github.com/pinzolo/8168337
+function! s:Clip(data)
+  let @*=a:data
+  echo "clipped: " . a:data
+endfunction
+command! -nargs=0 ClipPath call s:Clip(expand('%:p'))
+command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
+command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
+
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
