@@ -122,3 +122,7 @@ eval "$(rbenv init -)"
 
 # for imagemagic
 export PKG_CONFIG_PATH=/usr/local/Cellar/imagemagick@6/6.9.10-14/lib/pkgconfig
+
+# for tmuxinator
+export EDITOR=/usr/local/bin/vim
+[[ -s /Users/lighty/.tmuxinator/scripts/tmuxinator ]] && source /Users/lighty/.tmuxinator/scripts/tmuxinator
