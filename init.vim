@@ -128,6 +128,10 @@ nnoremap <Leader>s :<C-u>sp<CR>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
+" for nvim
+nnoremap <Leader>a :<C-u>NERDTree<CR>
+nnoremap <Leader>f :<C-u>NERDTreeFind<CR>
+
 " 同インデントへの移動
 nnoremap <Leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>zz
 nnoremap <Leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>zz
@@ -183,7 +187,7 @@ au BufNewFile,BufRead *.irb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf
 au BufNewFile,BufRead *.yml   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.pp    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.js    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
-au BufNewFile,BufRead *.ts    setlocal tabstop=4 shiftwidth=4 expandtab fenc=utf8 filetype=typescript
+au BufNewFile,BufRead *.ts    setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8 filetype=typescript
 au BufNewFile,BufRead *.coffee setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc-jp
 au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
