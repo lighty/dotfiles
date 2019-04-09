@@ -162,11 +162,14 @@ nnoremap gh gT
 nnoremap <Leader>ie :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
 
+" 英かなでC-pを↑にマップしているのを打ち消す
+inoremap <UP> <C-p>
+
 " ウィンドウサイズの変更
 nnoremap <S-Left>  3<C-w><
 nnoremap <S-Right> 3<C-w>>
-nnoremap <Up>    <C-w>-
-nnoremap <Down>  <C-w>+
+nnoremap <S-Up>    3<C-w>-
+nnoremap <S-Down>  3<C-w>+
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
 inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
@@ -176,9 +179,6 @@ inoremap " ""<Left>
 inoremap ' ''<Left>
 inoremap ` ``<Left>
 
-" 英かなでC-pを↑にマップしているのを打ち消す
-"inoremap <UP> <C-p>
-
 " https://gist.github.com/pinzolo/8168337
 function! s:Clip(data)
   let @*=a:data
@@ -187,6 +187,7 @@ endfunction
 command! -nargs=0 ClipPath call s:Clip(expand('%:p'))
 command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
 command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
+nnoremap <Leader>yp :ClipPath<CR>
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
