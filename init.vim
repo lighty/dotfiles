@@ -146,8 +146,6 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
-" 英かなでC-pを↑にマップしているのを打ち消す
-inoremap <UP> <C-p>
 
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
@@ -156,6 +154,20 @@ nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
 nnoremap <Leader>[ :<C-u>CtrlP<CR>
 nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
 
+" タブ間の移動
+nnoremap gl gt
+nnoremap gh gT
+
+" init.vimの編集
+nnoremap <Leader>ie :tabe ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
+
+" ウィンドウサイズの変更
+nnoremap <S-Left>  3<C-w><
+nnoremap <S-Right> 3<C-w>>
+nnoremap <Up>    <C-w>-
+nnoremap <Down>  <C-w>+
+
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
 inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
 inoremap [ []<Left>
@@ -163,6 +175,9 @@ inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 inoremap ` ``<Left>
+
+" 英かなでC-pを↑にマップしているのを打ち消す
+"inoremap <UP> <C-p>
 
 " https://gist.github.com/pinzolo/8168337
 function! s:Clip(data)
