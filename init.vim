@@ -184,7 +184,7 @@ function! s:Clip(data)
   let @*=a:data
   echo "clipped: " . a:data
 endfunction
-command! -nargs=0 ClipPath call s:Clip(expand('%:p'))
+command! -nargs=0 ClipPath call s:Clip(expand('%:.'))
 command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
 command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
 nnoremap <Leader>yp :ClipPath<CR>
