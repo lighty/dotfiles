@@ -77,7 +77,7 @@ if has('vim_starting')
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'thinca/vim-quickrun'
-  " NeoBundle 'Align'
+"  NeoBundle 'Align'
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'vim-scripts/vim-auto-save'
   NeoBundle "kien/ctrlp.vim"
@@ -138,7 +138,7 @@ nnoremap <Leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' .
 
 
 " タグジャンプ
-nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-j> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
 " 検索位置を中央に持ってくる
@@ -147,16 +147,28 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
+" syntastic から rubocop を実行する設定
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_ruby_checkers = ['rubocop']
+nnoremap <Leader>e :SyntasticCheck<CR>
+
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
+
+" quickrunでrspec実行
+let g:quickrun_config = {}
+let g:quickrun_config._ = {'runner':'vimproc'}
+let g:quickrun_config.rspec =  { 'command': 'rspec', 'exec': "docker-compose exec -T spring spring rspec %{expand('%:.')}:%{line('.')} %a" }
+" todo 非同期とファイル名によるft設定 ref:https://celt.hatenablog.jp/entry/2014/04/01/202433"
+nnoremap <Leader>rt :QuickRun rspec<CR>
 
 " ctrlP用のキーマップ 参考: https://qiita.com/oahiroaki/items/d71337fb9d28303a54a8
 nnoremap <Leader>[ :<C-u>CtrlP<CR>
 nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
 
 " タブ間の移動
-nnoremap gl gt
-nnoremap gh gT
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 
 " init.vimの編集
 nnoremap <Leader>ie :tabe ~/.config/nvim/init.vim<CR>
@@ -185,9 +197,10 @@ function! s:Clip(data)
   echo "clipped: " . a:data
 endfunction
 command! -nargs=0 ClipPath call s:Clip(expand('%:.'))
+command! -nargs=0 ClipPathLine call s:Clip(expand('%:.') . ":" . line('.'))
 command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
 command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
-nnoremap <Leader>yp :ClipPath<CR>
+nnoremap <Leader>yp :ClipPathLine<CR>
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
