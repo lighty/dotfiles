@@ -15,6 +15,15 @@ setopt brace_ccl
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
 export PATH=$HOME/.pyenv/shims:$PATH
 
+# protobuf関連
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/var/protoc
+export PATH=$PATH:/usr/local/var/protoc/bin
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export PATH=$GOPATH:$PATH
+export PATH=$GOBIN:$PATH
+
 # 便利スクリプト読み込み
 export PATH=$HOME/bin:$PATH
 
