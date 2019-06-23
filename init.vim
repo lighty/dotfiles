@@ -136,7 +136,6 @@ nnoremap <Leader>f :<C-u>NERDTreeFind<CR>
 nnoremap <Leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>zz
 nnoremap <Leader>j :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>zz
 
-
 " タグジャンプ
 nnoremap <C-j> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
@@ -201,6 +200,7 @@ command! -nargs=0 ClipPathLine call s:Clip(expand('%:.') . ":" . line('.'))
 command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
 command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
 nnoremap <Leader>yp :ClipPathLine<CR>
+nnoremap <Leader>yo :ClipPath<CR>
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
