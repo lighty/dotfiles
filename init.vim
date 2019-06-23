@@ -184,11 +184,11 @@ nnoremap <S-Down>  3<C-w>+
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
 inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
-inoremap [ []<Left>
-inoremap ( ()<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap ` ``<Left>
+" inoremap [ []<Left>
+" inoremap ( ()<Left>
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
+" inoremap ` ``<Left>
 
 " https://gist.github.com/pinzolo/8168337
 function! s:Clip(data)
