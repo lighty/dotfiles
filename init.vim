@@ -169,6 +169,16 @@ nnoremap <Leader>p :<C-u>CtrlPBuffer<CR>
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
+" easy-motion
+map  <Leader><Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+map  <Leader><Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
+" nmap s <Plug>(easymotion-overwin-f2)
+nmap f <Plug>(easymotion-overwin-w)
+
 " init.vimの編集
 nnoremap <Leader>ie :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
