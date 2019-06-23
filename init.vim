@@ -202,6 +202,13 @@ command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
 nnoremap <Leader>yp :ClipPathLine<CR>
 nnoremap <Leader>yo :ClipPath<CR>
 
+" submode
+call submode#enter_with('winmove', 'n', '', 's', '<Esc>')
+call submode#map('winmove', 'n', '', 'h', '<C-w>h')
+call submode#map('winmove', 'n', '', 'j', '<C-w>j')
+call submode#map('winmove', 'n', '', 'k', '<C-w>k')
+call submode#map('winmove', 'n', '', 'l', '<C-w>l')
+
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.erb   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
