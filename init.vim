@@ -177,7 +177,6 @@ nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
 map  <Leader><Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
 " nmap s <Plug>(easymotion-overwin-f2)
-nmap f <Plug>(easymotion-overwin-w)
 
 " init.vimの編集
 nnoremap <Leader>ie :tabe ~/.config/nvim/init.vim<CR>
