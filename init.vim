@@ -186,12 +186,6 @@ nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
 " 英かなでC-pを↑にマップしているのを打ち消す
 inoremap <UP> <C-p>
 
-" ウィンドウサイズの変更
-nnoremap <S-Left>  3<C-w><
-nnoremap <S-Right> 3<C-w>>
-nnoremap <S-Up>    3<C-w>-
-nnoremap <S-Down>  3<C-w>+
-
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
 inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
 " inoremap [ []<Left>
@@ -218,6 +212,14 @@ call submode#map('winmove', 'n', '', 'h', '<C-w>h')
 call submode#map('winmove', 'n', '', 'j', '<C-w>j')
 call submode#map('winmove', 'n', '', 'k', '<C-w>k')
 call submode#map('winmove', 'n', '', 'l', '<C-w>l')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
 
 ".rhtml, .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.slim  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
