@@ -157,7 +157,7 @@ nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
 " quickrunでrspec実行
 let g:quickrun_config = {}
 let g:quickrun_config._ = {'runner':'vimproc'}
-let g:quickrun_config.rspec =  { 'command': 'rspec', 'exec': "docker-compose exec -T spring spring rspec %{expand('%:.')}:%{line('.')} %a" }
+let g:quickrun_config.rspec =  { 'command': 'rspec', 'exec': "bundle exec spring rspec -f d %{expand('%:.')}:%{line('.')} %a" }
 " todo 非同期とファイル名によるft設定 ref:https://celt.hatenablog.jp/entry/2014/04/01/202433"
 nnoremap <Leader>rt :QuickRun rspec<CR>
 
@@ -186,7 +186,7 @@ nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
 inoremap <UP> <C-p>
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
-inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
 " inoremap [ []<Left>
 " inoremap ( ()<Left>
 " inoremap " ""<Left>
