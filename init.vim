@@ -83,6 +83,7 @@ if has('vim_starting')
   NeoBundle "kien/ctrlp.vim"
   NeoBundle 'nazo/pt.vim'
   NeoBundle 'mattn/emmet-vim'
+  NeoBundle 'posva/vim-vue'
   call neobundle#end()
 endif
 
@@ -186,7 +187,7 @@ nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
 inoremap <UP> <C-p>
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
-" inoremap {<Enter> {}<Left><CR><ESC><S-o><tab>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
 " inoremap [ []<Left>
 " inoremap ( ()<Left>
 " inoremap " ""<Left>
@@ -204,6 +205,12 @@ command! -nargs=0 ClipFile call s:Clip(expand('%:t'))
 command! -nargs=0 ClipDir  call s:Clip(expand('%:p:h'))
 nnoremap <Leader>yp :ClipPathLine<CR>
 nnoremap <Leader>yo :ClipPath<CR>
+
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " submode
 call submode#enter_with('winmove', 'n', '', 's', '<Esc>')
@@ -240,6 +247,7 @@ au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc
 au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.yaml  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.c     setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
+au BufNewFile,BufRead *.go    setlocal tabstop=4 shiftwidth=4 fenc=utf8
 au BufNewFile,BufRead *.md    setlocal fenc=utf8
 
 let g:python3_host_prog = expand('~/.pyenv/shims/python3')
