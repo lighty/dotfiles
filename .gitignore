@@ -4,3 +4,6 @@ tags
 .pryrc
 .vscode
 Session.vim
+speccy_lint_result
+.DS_Store
+\[quickrun\ output\]
