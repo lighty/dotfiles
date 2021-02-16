@@ -1,0 +1,9 @@
+[user]
+	email = hikalin8686@gmail.com
+	name = lighty
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
+[ghq]
+	root = ~/ghq
