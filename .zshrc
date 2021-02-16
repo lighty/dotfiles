@@ -87,11 +87,14 @@ alias su="su -l"
 
 # git
 alias gs="git status"
+alias gl="git log"
 alias gd="git diff --color"
 alias gcm="git commit"
 alias gch="git checkout"
 alias ga="git add"
-alias gp="git pull"
+alias gp="git pull -p"
+alias gf="git fetch -p"
+alias gbhis='git --no-pager reflog | head -n 100 | awk '\''$3 == "checkout:" && /moving from/ {print $8}'\'' | uniq | peco | xargs git checkout'
 
 alias pt="pt --global-gitignore"
 
@@ -126,7 +129,7 @@ export AMPY_PORT=/dev/tty.SLAB_USBtoUART
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # for rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
 # for imagemagic
@@ -139,3 +142,6 @@ export EDITOR=/usr/local/bin/vim
 # for nvim
 export XDG_CONFIG_HOME=~/.config
 alias vim="nvim"
+
+# notify
+alias notifydone='terminal-notifier -title "Terminal" -message "Done with task"'
