@@ -1,0 +1,57 @@
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'tpope/vim-abolish'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+# 以下はLSPの設定
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'thomasfaingnaert/vim-lsp-snippets'
+
+[[plugins]]
+repo = 'thomasfaingnaert/vim-lsp-ultisnips'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
+repo = 'mattn/vim-goimports'
