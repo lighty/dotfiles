@@ -52,40 +52,27 @@ if dein#check_install()
   call dein#install()
 endif
 
-nnoremap <silent> <C-y><C-y> :<C-u>Denite file_rec<CR>
+" for Denite
+nnoremap <silent> <C-y><C-y> :<C-u>Denite file/rec<CR>
 nnoremap <silent> <C-y><C-b> :<C-u>Denite buffer<CR>
 nnoremap <silent> <C-y><C-d> :<C-u>DeniteBufferDir file_rec<CR>
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 
 filetype off
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ } 
-  NeoBundle 'glidenote/memolist.vim'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'typescript-vim'
-  NeoBundle 'kchmck/vim-coffee-script'
-  NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'thinca/vim-quickrun'
-"  NeoBundle 'Align'
-  NeoBundle 'tyru/open-browser.vim'
-  NeoBundle 'vim-scripts/vim-auto-save'
-  NeoBundle "kien/ctrlp.vim"
-  NeoBundle 'nazo/pt.vim'
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'posva/vim-vue'
-  call neobundle#end()
-endif
 
 " Emmetで使いたかったのでinsert modeのときも使えるように
 let imapleader="C-y"
@@ -147,10 +134,9 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-" syntastic から rubocop を実行する設定
-let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_ruby_checkers = ['rubocop']
-nnoremap <Leader>e :SyntasticCheck<CR>
+" for ale
+let g:ale_fixers = { 'ruby': ['rubocop'] }
+let g:ale_completion_enabled = 1
 
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
@@ -247,8 +233,9 @@ au BufNewFile,BufRead *.php   setlocal tabstop=4 shiftwidth=4 expandtab fenc=euc
 au BufNewFile,BufRead *.sql   setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.yaml  setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
 au BufNewFile,BufRead *.c     setlocal tabstop=2 shiftwidth=2 expandtab fenc=utf8
-au BufNewFile,BufRead *.go    setlocal tabstop=4 shiftwidth=4 fenc=utf8
+au BufNewFile,BufRead *.go    setlocal tabstop=4 shiftwidth=4 noexpandtab fenc=utf8
 au BufNewFile,BufRead *.md    setlocal fenc=utf8
+au BufNewFile,BufRead *.tsx,*.jsx setlocal filetype=typescriptreact
 
 let g:python3_host_prog = expand('~/.pyenv/shims/python3')
 
@@ -306,6 +293,10 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 set completeopt+=menuone
 " LSPの設定ここまで
+
+" for vim-goimports
+" enable auto format when write (default)
+let g:goimports = 0
 
 " terminalの設定
 tnoremap <Esc> <C-\><C-n>
