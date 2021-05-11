@@ -81,5 +81,9 @@ repo = 'glidenote/memolist.vim'
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
 
+# for apply vim-jsx-pretty to tsx
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+
 [[plugins]]
 repo = 'mattn/emmet-vim'
