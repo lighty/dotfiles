@@ -145,3 +145,11 @@ alias vim="nvim"
 
 # notify
 alias notifydone='terminal-notifier -title "Terminal" -message "Done with task"'
+
+# nodenv
+eval "$(nodenv init -)"
+export PATH="$HOME/.nodenv/bin:$PATH"
+
+# yvm
+export YVM_DIR=/usr/local/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
