@@ -54,6 +54,7 @@ endif
 
 " for Denite
 nnoremap <silent> <C-y><C-y> :<C-u>Denite file/rec<CR>
+nnoremap <silent> <C-y><C-g> :<C-u>Denite grep<CR>
 nnoremap <silent> <C-y><C-b> :<C-u>Denite buffer<CR>
 nnoremap <silent> <C-y><C-d> :<C-u>DeniteBufferDir file_rec<CR>
 autocmd FileType denite call s:denite_my_settings()
