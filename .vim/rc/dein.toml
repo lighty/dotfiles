@@ -87,3 +87,12 @@ repo = 'HerringtonDarkholme/yats.vim'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
