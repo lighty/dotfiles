@@ -104,6 +104,7 @@ nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<line2> <f-args> -- %
+command! -nargs=* -range GitLog !git log -L<line1>,<line2>:%
 
 "vim-auto-save
 let g:auto_save = 1
@@ -148,6 +149,7 @@ let g:quickrun_config._ = {'runner':'vimproc'}
 let g:quickrun_config.rspec =  { 'command': 'rspec', 'exec': "bundle exec spring rspec -f d %{expand('%:.')}:%{line('.')} %a" }
 " todo 非同期とファイル名によるft設定 ref:https://celt.hatenablog.jp/entry/2014/04/01/202433"
 nnoremap <Leader>rt :QuickRun rspec<CR>
+nnoremap <Leader>rr :QuickRun<CR>
 
 " ctrlP用のキーマップ 参考: https://qiita.com/oahiroaki/items/d71337fb9d28303a54a8
 nnoremap <Leader>[ :<C-u>CtrlP<CR>
@@ -301,6 +303,14 @@ let g:goimports = 0
 
 " terminalの設定
 tnoremap <Esc> <C-\><C-n>
+
+" deoplete(入力補完)
+let g:deoplete#enable_at_startup = 1
+
+" pip install sqlparse
+if executable('sqlformat')
+  command! -range=% SQLFmt <line1>,<line2>!sqlformat -r -k upper -
+endif
 
 " for fzf.vim
 nnoremap <C-y><C-y> :GitFiles<CR>
