@@ -104,24 +104,6 @@ REPORTTIME=3
 #補完候補を矢印キーなどで選択出来るようにする
 zstyle ':completion:*:default' menu select
 
-# http://suzutan.hateblo.jp/entry/2017/12/05/165204
-function peco-repo-list () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N peco-repo-list
-bindkey '^t' peco-repo-list
-function peco-git-browse () {
-    github_repo=$(ghq list | peco)
-    GITHUB_HOST=$(echo ${github_repo} | cut -d "/" -f 1) hub browse $(echo ${github_repo} | cut -d "/" -f 2,3)
-}
-zle -N peco-git-browse
-bindkey '^y' peco-git-browse
-
 # https://ambidata.io/blog/2018/03/15/ampy/
 export AMPY_PORT=/dev/tty.SLAB_USBtoUART
 
@@ -153,3 +135,30 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 # yvm
 export YVM_DIR=/usr/local/opt/yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lighty/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lighty/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lighty/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lighty/google-cloud-sdk/completion.zsh.inc'; fi
+
+# for fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# http://suzutan.hateblo.jp/entry/2017/12/05/165204
+function peco-repo-list () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-repo-list
+bindkey '^t' peco-repo-list
+function peco-git-browse () {
+    github_repo=$(ghq list | peco)
+    GITHUB_HOST=$(echo ${github_repo} | cut -d "/" -f 1) hub browse $(echo ${github_repo} | cut -d "/" -f 2,3)
+}
+zle -N peco-git-browse
+bindkey '^y' peco-git-browse
