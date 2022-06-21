@@ -53,25 +53,25 @@ if dein#check_install()
 endif
 
 " for Denite
-nnoremap <silent> <C-y><C-y> :<C-u>Denite file/rec<CR>
-nnoremap <silent> <C-y><C-g> :<C-u>Denite grep<CR>
-nnoremap <silent> <C-y><C-b> :<C-u>Denite buffer<CR>
-nnoremap <silent> <C-y><C-d> :<C-u>DeniteBufferDir file_rec<CR>
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
+" nnoremap <silent> <C-y><C-y> :<C-u>Denite file/rec<CR>
+" nnoremap <silent> <C-y><C-g> :<C-u>Denite grep<CR>
+" nnoremap <silent> <C-y><C-b> :<C-u>Denite buffer<CR>
+" nnoremap <silent> <C-y><C-d> :<C-u>DeniteBufferDir file_rec<CR>
+" autocmd FileType denite call s:denite_my_settings()
+" function! s:denite_my_settings() abort
+"   nnoremap <silent><buffer><expr> <CR>
+"   \ denite#do_map('do_action')
+"   nnoremap <silent><buffer><expr> d
+"   \ denite#do_map('do_action', 'delete')
+"   nnoremap <silent><buffer><expr> p
+"   \ denite#do_map('do_action', 'preview')
+"   nnoremap <silent><buffer><expr> q
+"   \ denite#do_map('quit')
+"   nnoremap <silent><buffer><expr> i
+"   \ denite#do_map('open_filter_buffer')
+"   nnoremap <silent><buffer><expr> <Space>
+"   \ denite#do_map('toggle_select').'j'
+" endfunction
 
 filetype off
 
@@ -174,7 +174,7 @@ nnoremap <Leader>ir :source ~/.config/nvim/init.vim<CR>
 inoremap <UP> <C-p>
 
 " 括弧の補完 https://qiita.com/ykyk1218/items/ab1c89c4eb6a2f90333a
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
 " inoremap [ []<Left>
 " inoremap ( ()<Left>
 " inoremap " ""<Left>
@@ -301,3 +301,7 @@ let g:goimports = 0
 
 " terminalの設定
 tnoremap <Esc> <C-\><C-n>
+
+" for fzf.vim
+nnoremap <C-y><C-y> :GitFiles<CR>
+nnoremap <C-y><C-g> :Rg<Space>
