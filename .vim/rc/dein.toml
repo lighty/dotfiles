@@ -12,7 +12,7 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 
 [[plugins]]
 repo = 'tpope/vim-abolish'
