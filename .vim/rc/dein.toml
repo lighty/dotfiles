@@ -33,6 +33,9 @@ repo = 'tpope/vim-surround'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 rev = 'v0.8.0'
 
