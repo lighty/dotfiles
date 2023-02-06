@@ -140,6 +140,9 @@ nnoremap # #zz
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_fixers = { 'ruby': ['rubocop'] }
 let g:ale_completion_enabled = 1
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\}
 
 " quickrunのバッファエリアをスペース+qで閉じる
 nnoremap <Leader>q : <C-u>bw! \[quickrun\ output\]<CR>
