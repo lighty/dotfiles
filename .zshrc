@@ -11,10 +11,6 @@ setopt auto_pushd
 #ブレースを展開してくれる
 setopt brace_ccl
 
-#tmuxとかmysqlの設定
-export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin:$PATH
-export PATH=$HOME/.pyenv/shims:$PATH
-
 # protobuf関連
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/var/protoc
@@ -26,7 +22,6 @@ export PATH=$GOBIN:$PATH
 
 # 便利スクリプト読み込み
 export PATH=$HOME/bin:$PATH
-
 
 #プロンプト表示に関わる設定
 PROMPT="%m:%c %n$ "
@@ -91,6 +86,8 @@ alias gl="git log"
 alias gd="git diff --color"
 alias gcm="git commit"
 alias gch="git checkout"
+alias gres="git restore"
+alias gsw="git switch"
 alias ga="git add"
 alias gp="git pull -p"
 alias gf="git fetch -p"
@@ -136,12 +133,6 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 export YVM_DIR=/usr/local/opt/yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/lighty/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lighty/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/lighty/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lighty/google-cloud-sdk/completion.zsh.inc'; fi
-
 # for fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -162,3 +153,9 @@ function peco-git-browse () {
 }
 zle -N peco-git-browse
 bindkey '^y' peco-git-browse
+
+#tmuxとかmysqlの設定
+export PATH=$PATH:~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin
+export PATH=$HOME/.pyenv/shims:$PATH
+
+source ~/.zshrc.local
