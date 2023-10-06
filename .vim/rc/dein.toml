@@ -77,3 +77,9 @@ repo = 'mattn/vim-sqlfmt'
 repo = 'neoclide/coc.nvim'
 source = 'release'
 build = 'coc#util#install()'
+
+[[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
+repo = 'chrisbra/csv.vim'

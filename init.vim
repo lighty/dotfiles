@@ -137,7 +137,7 @@ nnoremap # #zz
 
 " for ale
 let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_fixers = { 'ruby': ['rubocop'] }
+let g:ale_fixers = { 'ruby': ['rubocop'], 'typescript': ['prettier', 'eslint'] }
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
@@ -299,3 +299,13 @@ nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" chrisbra/csv.vim
+nnoremap <Leader>ca :%ArrangeColumn<CR>
+nnoremap <Leader>cu :%UnArrangeColumn<CR>
+
+" or markdown syntax hilight https://zenn.dev/kawarimidoll/articles/5490567f8194a4
+augroup update_markdown_syntax
+  autocmd!
+  autocmd BufNew,BufEnter * if &filetype == 'markdown' | syntax match markdownError '\w\@<=\w\@=' | endif
+augroup END
