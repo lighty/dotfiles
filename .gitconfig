@@ -8,3 +8,5 @@
 	delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
 [ghq]
 	root = ~/ghq
+[alias]
+  show-pr = !"f() { gh pr view -w $(git log --merges --oneline --ancestry-path $1...HEAD | grep 'Merge pull request #' | tail -n 1 | awk '{print substr($5, 2)}'); }; f"
