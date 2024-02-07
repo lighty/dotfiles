@@ -91,7 +91,7 @@ alias gsw="git switch"
 alias ga="git add"
 alias gp="git pull -p"
 alias gf="git fetch -p"
-alias gbhis='git --no-pager reflog | head -n 100 | awk '\''$3 == "checkout:" && /moving from/ {print $8}'\'' | uniq | peco | xargs git checkout'
+alias gbhis='git --no-pager reflog | head -n 1000 | awk '\''$3 == "checkout:" && /moving from/ {print $8}'\'' | uniq | peco | xargs git checkout'
 
 alias pt="pt --global-gitignore"
 
@@ -159,3 +159,12 @@ export PATH=$PATH:~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/lib/mysql5/bin
 export PATH=$HOME/.pyenv/shims:$PATH
 
 source ~/.zshrc.local
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hikaru.watanabe/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hikaru.watanabe/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hikaru.watanabe/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hikaru.watanabe/google-cloud-sdk/completion.zsh.inc'; fi
+
+# PROMPT
+export PROMPT="%* %c$ "
