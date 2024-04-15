@@ -83,3 +83,6 @@ repo = 'github/copilot.vim'
 
 [[plugins]]
 repo = 'chrisbra/csv.vim'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
