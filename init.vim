@@ -105,8 +105,10 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 command! -nargs=* -range GitLog !git log -L<line1>,<line2>:%
 
-"vim-auto-save
+" vim-auto-save
 let g:auto_save = 1
+" editorconfigでtrim_trailing_whitespaceにかかるのを防ぐため
+let g:auto_save_in_insert_mode = 0
 
 " 便利
 inoremap <C-j> <ESC>
@@ -120,6 +122,9 @@ inoremap <C-b> <Left>
 " for nvim
 nnoremap <Leader>a :<C-u>NERDTree<CR>
 nnoremap <Leader>f :<C-u>NERDTreeFind<CR>
+nnoremap <Leader>b :<C-u>Git blame<CR>
+nnoremap <Leader>g :<C-u>GBrowse<CR>
+vnoremap <Leader>g :'<,'>GBrowse<CR>
 
 " 同インデントへの移動
 nnoremap <Leader>k :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>zz
@@ -309,3 +314,8 @@ augroup update_markdown_syntax
   autocmd!
   autocmd BufNew,BufEnter * if &filetype == 'markdown' | syntax match markdownError '\w\@<=\w\@=' | endif
 augroup END
+
+"タブ自体を移動する
+nnoremap <Tab>l :+tabmove<CR>
+nnoremap <Tab>h :-tabmove<CR>
+
